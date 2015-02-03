@@ -62,7 +62,12 @@ y0 = [DA;DR;DpA;DpR;MA;A;MR;R;C];
 fun = @(t,y)(genOscODE(t,y,b));
 
 %Lösning av ODE
-[t,y] = ode45(fun,tidsintervall,y0);
+[t,y] = ode15s(fun,tidsintervall,y0);
 
-plot(t,y);
+plot(t,y(:,6));
+hold on
+plot(t, y(:,8));
+hold off
 
+figure;
+plot(t(1:end-1),diff(t));
