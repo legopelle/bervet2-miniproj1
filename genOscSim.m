@@ -2,6 +2,7 @@
 %Nathalie 2015-01-30
 
 clear all;
+clc;
 
 %Tidsintervall (timmar)
 starttid = 0;
@@ -16,7 +17,7 @@ alphaR = 0.01;
 alphapR = 50;
 betaA = 50;
 betaR = 5;
-deltaMA = 10;
+deltaMA = 10;genOscS
 deltaMR = 0.5;
 deltaA = 1;
 deltaR = 0.2;
@@ -29,7 +30,7 @@ thetaR = 100;
 
 %En allokerad vektor som innehåller problemets samtliga parametrar, samt 
 %elementens betydelser
-b = zeros(15);
+b = zeros(15,1);
 b(1) = alphaA;
 b(2) = alphapA;
 b(3) = alphaR;
@@ -61,8 +62,10 @@ y0 = [DA;DR;DpA;DpR;MA;A;MR;R;C];
 %Omskrivning av högerledsfunktionerna
 fun = @(t,y)(genOscODE(t,y,b));
 
+opts = odeset('RelTol', 1e1);
+
 %Lösning av ODE
-[t,y] = ode45(fun,tidsintervall,y0);
+[t,y] = ode45(fun,tidsintervall,y0, opts);
 
 plot(t,y);
 
