@@ -67,5 +67,10 @@ opts = odeset('RelTol', 1e1);
 %Lösning av ODE
 [t,y] = ode45(fun,tidsintervall,y0, opts);
 
-plot(t,y);
+plot(t,y(:,6));
+hold on
+plot(t, y(:,8));
+hold off
 
+figure;
+plot(t(1:end-1),diff(t));
