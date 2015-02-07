@@ -1,7 +1,8 @@
 %Kommandofil för simuleringen av den genetiska oscillatorn
 %Nathalie 2015-01-30
 
-clear all;
+clear;
+close all;
 clc;
 
 %Tidsintervall (timmar)
@@ -17,7 +18,7 @@ alphaR = 0.01;
 alphapR = 50;
 betaA = 50;
 betaR = 5;
-deltaMA = 10;genOscS
+deltaMA = 10;
 deltaMR = 0.5;
 deltaA = 1;
 deltaR = 0.2;
@@ -62,15 +63,41 @@ y0 = [DA;DR;DpA;DpR;MA;A;MR;R;C];
 %Omskrivning av högerledsfunktionerna
 fun = @(t,y)(genOscODE(t,y,b));
 
-opts = odeset('RelTol', 1e1);
+%opts = odeset('RelTol', 1e1);
 
-%Lösning av ODE
-[t,y] = ode45(fun,tidsintervall,y0, opts);
+%Lösning av ODE med explicit metod
+tic
+[t,y] = ode45(fun,tidsintervall,y0);
+ode45 = toc
+
+%Lösning av ODE med implicit metod
+tic
+[s,z] = ode15s(fun,tidsintervall,y0);
+ode15s = toc
 
 plot(t,y(:,6));
 hold on
 plot(t, y(:,8));
 hold off
+title('Genetisk oscillator')
+xlabel('Tid (h)')
+ylabel('Antal molekyler (mol)')
+legend('A','R')
+
+%figure;
+%plot(s,z(:,6));
+%hold on
+%plot(s,z(:,8));
+%hold off
 
 figure;
+subplot(2,1,1);
 plot(t(1:end-1),diff(t));
+xlabel('Tid (h)')
+ylabel('Steglängd')
+legend('ode45','Location','NorthEast')
+subplot(2,1,2);
+plot(s(1:end-1),diff(s));
+xlabel('Tid (h)')
+ylabel('Steglängd')
+legend('ode15s','Location','NorthEast')
