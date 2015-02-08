@@ -1,0 +1,39 @@
+\section{Indata}
+\label{sec:indata}
+
+Initialvärden och parametrar för systemet ges i tabell~\ref{tab:initial} och
+\ref{tab:param}.
+
+\begin{table}
+	\centering
+	\begin{tabular}{ccccccccc}
+	  \toprule
+		$D_A$ & $D_R$ & $D'_A$ & $D'_R$ & $M_A$ & $A$ & $M_R$ & $R$ &
+		$C$ \\
+		\midrule
+		1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		\bottomrule
+	\end{tabular}
+	\label{tab:initial}
+	\caption{Initialvärden för systemet. Enheten är mol.}
+\end{table}
+
+\begin{table}
+	\centering
+	\resizebox{\textwidth}{!}{%
+	\begin{tabular}{ccccccccccccccc}
+	  \toprule
+		$\alpha_A$ & $\alpha'_A$ & $\alpha_R$ & $\alpha'_R$ & $\beta_A$
+		& $\beta_R$ & $\delta_{M_A}$ & $\delta_{M_R}$ & $\delta_A$ &
+		$\delta_R$ & $\gamma_A$ & $\gamma_R$ & $\gamma_C$ & $\theta_A$
+		& $\theta_R$ \\
+		\midrule
+		50 & 500 & 0.01 & 50 & 50 & 5 & 10 & 0.5 & 1 & 0.2 resp. 0.08 &
+		1 & 1 & 2 & 50 & 100 \\
+		\bottomrule
+	\end{tabular}
+      }
+	\label{tab:param}
+	\caption{Parametrar för systemet. Alla parametrar har enheterna
+	  h$^{-1}$ förutom $\gamma$ som har enheten mol$^{-1}$h$^{-1}$.}
+\end{table}

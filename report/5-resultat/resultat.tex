@@ -1,0 +1,36 @@
+\section{Resultat}
+
+\emph{Kod till samtliga script finns att skåda i sin helhet i Appendix ????}
+
+Nedan följer ett diary-exempel över en körning av skriptet \texttt{GenOscSim.m}.
+
+\begin{verbatim}
+genOscSim
+
+ode45 =
+
+20.3898
+
+
+ode15s =
+
+0.8554
+
+diary off
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{5-resultat/GenOsc}
+\caption{Lol}
+\end{figure}
+PLOT AV OSCILLATOR (GenOsc.fig) \label{GenOsc}
+PLOT AV OSCILLATOR (GenOsc008.fig) \label{GenOsc008}
+
+PLOT AV STEGLÄNGD (Steglangd.fig) \label{Steg}
+
+Variablerna \texttt{ode45} och \texttt{ode15s} är tiden i sekunder som har gått åt för att lösa differentialekvationerna med respektive lösning.
+
+Figur \ref{GenOsc} visar hur mängden av de båda proteinerna varierar under 200 timmar då hastigheten för den spontana nedbrytningen av protein R ($\delta_R$) är 0.2 h$^{-1}$. Figur \ref{GenOsc008} visar detsamma fast med $\delta_R =$ 0.08 h$^{-1}$.
+
+Figur \ref{Steg} visar hur tidssteglängden varierar med avseende på tid (i timmar) för de två olika metoderna ode45 respektive ode15s.
