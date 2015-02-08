@@ -1,7 +1,5 @@
 %Kommandofil för simuleringen av den genetiska oscillatorn
-%Nathalie 2015-01-30
-
-clear;
+clear all;
 close all;
 clc;
 
@@ -10,8 +8,8 @@ starttid = 0;
 sluttid = 200;
 tidsintervall = [starttid,sluttid];
 
-%Parametrar (alla utom har enhet h^(-1), utom gammavariablerna som istället
-%har mol^(-1) h^(-1) )
+%Parametrar (alla har enhet h^(-1), utom gammavariablerna som 
+%istället har mol^(-1) h^(-1) )
 alphaA = 50;
 alphapA = 500;
 alphaR = 0.01;
@@ -29,8 +27,8 @@ gammaC = 2;
 thetaA = 50;
 thetaR = 100;
 
-%En allokerad vektor som innehåller problemets samtliga parametrar, samt 
-%elementens betydelser
+%En allokerad vektor som innehåller problemets samtliga 
+%parametrar, samt elementens betydelser
 b = zeros(15,1);
 b(1) = alphaA;
 b(2) = alphapA;
@@ -63,17 +61,19 @@ y0 = [DA;DR;DpA;DpR;MA;A;MR;R;C];
 %Omskrivning av högerledsfunktionerna
 fun = @(t,y)(genOscODE(t,y,b));
 
-%opts = odeset('RelTol', 1e1);
-
 %Lösning av ODE med explicit metod
 tic
 [t,y] = ode45(fun,tidsintervall,y0);
 ode45 = toc
+steg45 = ode45/length(t);
+disp(['Tidsåtgång per steg: ',num2str(steg45)])
 
 %Lösning av ODE med implicit metod
 tic
 [s,z] = ode15s(fun,tidsintervall,y0);
 ode15s = toc
+steg15s = ode15s/length(s);
+disp(['Tidsåtgång per steg: ',num2str(steg15s)])
 
 plot(t,y(:,6));
 hold on

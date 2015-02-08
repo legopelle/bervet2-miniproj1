@@ -1,6 +1,7 @@
 \section{Resultat}
+\label{sec:resultat}
 
-\emph{Kod till samtliga script finns att skåda i sin helhet i Appendix ????}
+\emph{Kod till samtliga script finns att skåda i sin helhet i Appendix \ref{sec:appendix}.}
 
 Nedan följer ett diary-exempel över en körning av skriptet \texttt{GenOscSim.m}.
 
@@ -11,26 +12,40 @@ ode45 =
 
 20.3898
 
+Tidsåtgång per steg: 5.6029e-05
 
 ode15s =
 
 0.8554
 
+Tidsåtgång per steg: 0.0007567
+
 diary off
 \end{verbatim}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
-\includegraphics{5-resultat/GenOsc}
-\caption{Lol}
+\includegraphics[clip=true,trim=4cm 9cm 5cm 9cm,scale=0.85]{5-resultat/GenOsc}
+\caption{Graf över hur de studerade proteinernas mängder varierade över tiden, med parameter- och initialvärden givna i \ref{sec:indata} och för $\delta_R = 0,2$ h$^{-1}$.}
+\label{fig:GenOsc}
 \end{figure}
-PLOT AV OSCILLATOR (GenOsc.fig) \label{GenOsc}
-PLOT AV OSCILLATOR (GenOsc008.fig) \label{GenOsc008}
 
-PLOT AV STEGLÄNGD (Steglangd.fig) \label{Steg}
+\begin{figure}[H]
+	\centering
+	\includegraphics[clip=true,trim=4cm 9cm 5cm 9cm,scale=0.85]{5-resultat/GenOsc008}
+	\caption{Graf över hur de studerade proteinernas mängder varierade över tiden, med parameter- och initialvärden givna i \ref{sec:indata} och för $\delta_R = 0,08$ h$^{-1}$.}
+	\label{fig:GenOsc008}
+\end{figure}
 
-Variablerna \texttt{ode45} och \texttt{ode15s} är tiden i sekunder som har gått åt för att lösa differentialekvationerna med respektive lösning.
+\begin{figure}[H]
+	\centering
+	\includegraphics[clip=true,trim=4cm 9cm 5cm 9cm,scale=0.85]{5-resultat/Steg48}
+	\caption{Grafer över hur steglängden varierade över tiden som användes för att lösa systemet av ode:er för två olika lösningsmetoder, \texttt{ode45} respektive \texttt{ode15s}.}
+	\label{fig:Steg48}
+\end{figure}
 
-Figur \ref{GenOsc} visar hur mängden av de båda proteinerna varierar under 200 timmar då hastigheten för den spontana nedbrytningen av protein R ($\delta_R$) är 0.2 h$^{-1}$. Figur \ref{GenOsc008} visar detsamma fast med $\delta_R =$ 0.08 h$^{-1}$.
+Variablerna \texttt{ode45} och \texttt{ode15s} är tiden i sekunder som har gått åt för att lösa differentialekvationerna med respektive lösning. Nedanför varje har medelvärdet av tidsåtgången för varje steg skrivits ut.
 
-Figur \ref{Steg} visar hur tidssteglängden varierar med avseende på tid (i timmar) för de två olika metoderna ode45 respektive ode15s.
+Figur \ref{fig:GenOsc} visar hur mängden av de båda proteinerna varierar under 200 timmar då hastigheten för den spontana nedbrytningen av protein R ($\delta_R$) är 0.2 h$^{-1}$. Figur \ref{fig:GenOsc008} visar detsamma fast med $\delta_R =$ 0.08 h$^{-1}$.
+
+Figur \ref{fig:Steg48} visar hur tidssteglängden varierar med avseende på tid (i timmar) för de två olika metoderna ode45 respektive ode15s.
