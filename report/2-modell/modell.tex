@@ -1,0 +1,20 @@
+\section{Matematisk modell}
+
+Systemet kan modelleras som ett system av ordinära differentialekvationer
+enligt ekvationssystemet:
+\begin{align}
+\dd {D_A} t &= \theta_A D'_A - \gamma_A D_A A \\
+\dd {D_R} t &= \theta_R D'_R - \gamma_R D_R A \\
+\dd {D'_A} t &= \gamma_A D_A A - \theta_A D'_A \\
+\dd {D'_R} t &= \gamma_R D_R A - \theta_R D'_A \\
+\dd {M_A} t &= \alpha'_A D'_A + \alpha_A D_A - \delta_{M_A}M_A \\
+\dd A t &= \beta_A M_A + \theta_AD'_A + \theta_RD'R - A (\gamma_A D_A +
+	\gamma_R D_R + \gamma_C R + \delta_A) \\
+\dd {M_R} t &= \alpha'_R D'_R + \alpha_R D_R - \delta_{M_R} M_R \\
+\dd R t &= \beta_R M_R - \gamma_C A R + \delta_A C - \delta_R R \\
+\dd C t &= \gamma_C A R - \delta_A C
+\label{eqn:ode}
+\end{align}
+
+För initialvärden och parametrar, se avsnitt~\ref{sec:indata}.
+
