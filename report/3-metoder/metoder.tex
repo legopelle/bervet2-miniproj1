@@ -1,8 +1,12 @@
 \section{Numeriska metoder}
 \label{sec:metoder}
 
-I den här raporten jämförs två numeriska ode-lösare i \textsc{matlab}. En
-explicit femte ordningens Runge-Kutta, \texttt{ode45}, och en implicit
-Runge-Kutta av variabel ordning, \texttt{ode15s}.
+I den här rapporten jämförs två numeriska ode-lösare i \textsc{matlab}. En explicit femte ordningens Runge-Kutta, \texttt{ode45}, och en implicit Runge-Kutta av variabel ordning, \texttt{ode15s}. Funktionerna kan lösa ett system av första ordningens ordinära differentialekvationer (avsnitt~\ref{sec:modell}) med begynnelsevillkor (avsnitt~\ref{sec:indata}) i ett specifikt tidsintervall.
 
-\subsection{\texttt{ode45}}:e
+Funktionen anropas som \texttt{[t, y] = ode45(@fun, tint, y0)} där \textt{fun} är en \textsc{matlab}-funktion som definierer systemet av ode:er (appendix~\ref{sec:appendix}), \texttt{tint = [tstart tslut]} är intervallet och \texttt{y0} är en kolumnvektor av funktionernas initialvärden. Ut får man ett par av vektorer, \texttt{t} och \texttt{y} som definierar funktionsvärdena. För ett system av ode:er är \texttt{y} en matris med kolumner för de separata funktionerna.
+
+
+Den viktigaste skillnaden mellan metoderna är att \texttt{ode45} är explicit, vilket betyder att beräkningen i varje tidssteg är snabb, men kan ha problem att lösa styva ode:er. Eftersom
+metoden även är adaptiv kommer valet av steglängd variera och tidsåtgången likaså. För problematiska ode:er kommer steglängden bli mycket litet vilket resulterar i en stor tidsåtgång.
+
+En implicit metod som \texttt{ode15s} tar längre tid på sig att lösa varje tidssteg eftersom ekvationslösning är tidsmässigt dyrt. Däremot klarar den av styva ode:er med längre tidssteg för samma uppskattade fel. Detta kan leda till en total tid som är kortare än den för \texttt{ode45} om den senare behöver många fler steg.
